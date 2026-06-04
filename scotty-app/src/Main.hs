@@ -96,7 +96,7 @@ layout pageTitle content = TL.unlines
   , "<link rel='preconnect' href='https://fonts.googleapis.com'/>"
   , "<link href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap' rel='stylesheet'/>"
   , "<link rel='stylesheet' href='/style.css'/>"
-  , "<link rel='stylesheet' href='/blog.css'/>"
+  , "<link rel='stylesheet' href='/blogs.css'/>"
   , "</head><body>"
   , "<nav>"
   , "  <a class='logo' href='/'>Verdant Studio</a>"
@@ -156,7 +156,7 @@ main = do
   home <- TLIO.readFile "templates/index.html"
 
   putStrLn "Server running on http://localhost:3001"
-  scotty 3000 $ do
+  scotty 3001 $ do
 
     middleware $ staticPolicy (addBase "static")
 
