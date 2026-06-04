@@ -3,7 +3,7 @@ WORKDIR /app
 COPY *.cabal ./
 RUN cabal update && cabal build --only-dependencies
 COPY . .
-RUN cabal build && cp $(cabal list-bin scotty-site) /app/scotty-site
+RUN cabal build --ghc-options="-threaded -rtsopts -with-rtsopts=-N" && cp $(cabal list-bin scotty-site) /app/scotty-site
 
 FROM debian:bookworm-slim
 WORKDIR /app
@@ -13,4 +13,4 @@ COPY static ./static
 COPY posts ./posts
 COPY templates ./templates
 EXPOSE 3000
-CMD ["./scotty-site"]
+CMD ["./scotty-site", "+RTS", "-N"]

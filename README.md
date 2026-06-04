@@ -11,4 +11,4 @@ On services, you'll find a simple explanation of what this company can do, depen
 
 On Journal you'll find fictional journals that I was asked to invent for this site.
 
-On contact you'll find a form to complete with your 
+On contact you'll find a form to complete with your name and question, the send button won't work though since it is just for learning haskell.
