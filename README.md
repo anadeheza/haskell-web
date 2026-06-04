@@ -11,4 +11,7 @@ On services, you'll find a simple explanation of what this company can do, depen
 
 On Journal you'll find fictional journals that I was asked to invent for this site.
 
-On contact you'll find a form to complete with your name and question, the send button won't work though since it is just for learning haskell.
+On contact you'll find a form to complete with your name, email and project idea, the send button won't work though, since it is just for learning haskell.
+
+### AI USE
+> I used Gemini to help me understand Haskell syntax since my teacher's explanation wasn't always enough for me. I also used Claude AI to fix the Dockerfile since the deploy was not working and i didn't know why :)
