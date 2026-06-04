@@ -1,0 +1,28 @@
+# Cabal build artifacts
+dist-newstyle/
+.cabal-sandbox/
+cabal.sandbox.config
+cabal.project.local
+cabal.project.local~
+.ghc.environment.*
+
+# GHC
+*.o
+*.hi
+*.hie
+*.dyn_o
+*.dyn_hi
+
+# Compiled binary
+scotty-site
+scotty-site.exe
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db

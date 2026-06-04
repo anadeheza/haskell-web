@@ -159,7 +159,7 @@ main = do
 
     get "/" $ do
       setHeader "Content-Type" "text/html; charset=utf-8"
-      home <- liftIO $ TLIO.readFile "static/index.html"
+      home <- liftIO $ TLIO.readFile "templates/index.html"
       html home
 
     get "/blog" $ do
