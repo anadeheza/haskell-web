@@ -12,6 +12,8 @@ import System.Directory        (listDirectory)
 import System.FilePath         ((</>), dropExtension, takeFileName)
 import Prelude hiding          (readFile)
 import Network.Wai.Middleware.Static (staticPolicy, addBase)
+import System.Environment (lookupEnv)
+import Data.Maybe (fromMaybe)
 
 data Post = Post
   { postSlug    :: Text   
@@ -148,15 +150,16 @@ postPageHtml p = layout (postTitle p) $ TL.unlines
 
 main :: IO ()
 main = do
-  home <- TLIO.readFile "templates/index.html"
-
-  putStrLn "Server running on http://localhost:3001"
-  scotty 3001 $ do
+  portStr <- lookupEnv "PORT"
+  let port = maybe 3000 read portStr
+  putStrLn $ "Server running on port " ++ show port
+  scotty port $ do
 
     middleware $ staticPolicy (addBase "static")
 
     get "/" $ do
       setHeader "Content-Type" "text/html; charset=utf-8"
+      home <- liftIO $ TLIO.readFile "static/index.html"
       html home
 
     get "/blog" $ do
