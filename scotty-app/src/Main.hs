@@ -101,8 +101,8 @@ layout pageTitle content = TL.unlines
   , "<nav>"
   , "  <a class='logo' href='/'>Verdant Studio</a>"
   , "  <ul class='nav-links'>"
+  , "    <li><a href='/#hero'>Home</a></li>"
   , "    <li><a href='/#services'>Services</a></li>"
-  , "    <li><a href='/#about'>About</a></li>"
   , "    <li><a href='/blog'>Journal</a></li>"
   , "    <li><a href='/#contact'>Contact</a></li>"
   , "  </ul>"
@@ -110,10 +110,6 @@ layout pageTitle content = TL.unlines
   , "<main class='page-content'>"
   , content
   , "</main>"
-  , "<footer>"
-  , "  <div class='footer-logo'>Verdant Studio</div>"
-  , "  <div>&copy; 2026 Verdant Studio.</div>"
-  , "</footer>"
   , "</body></html>"
   ]
 
@@ -124,7 +120,6 @@ blogIndexHtml posts =
     [ "<div class='blog-header'>"
     , "  <p class='section-tag'>Latest writing</p>"
     , "  <h1 class='blog-title'>The Verdant Journal</h1>"
-    , "  <p class='blog-subtitle'>Seasonal notes, project stories, and design thinking.</p>"
     , "</div>"
     , "<div class='post-grid'>" <> cards <> "</div>"
     ]
