@@ -2,7 +2,8 @@
 
 module Main where
 
-import Web.Scotty
+import Network.Wai.Handler.Warp (setHost, setPort, defaultSettings)
+import Web.Scotty (Options(..), scottyOpts) 
 import Data.Text.Lazy          (Text)
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.IO as TLIO
@@ -153,10 +154,15 @@ main = do
   portStr <- lookupEnv "PORT"
   let port = maybe 3000 read portStr
   putStrLn $ "Server running on port " ++ show port
-  scotty port $ do
 
+  -- Configura el servidor Warp: escucha en 0.0.0.0 y en el puerto dinámico
+  let warpSettings = setPort port $ setHost "0.0.0.0" defaultSettings
+      scottyOptions = Options { verbose = 1, settings = warpSettings }
+
+  scottyOpts scottyOptions $ do
+
+    -- ... Aquí va el resto de tus rutas (las que ya tienes) ...
     middleware $ staticPolicy (addBase "static")
-
     get "/" $ do
       setHeader "Content-Type" "text/html; charset=utf-8"
       home <- liftIO $ TLIO.readFile "templates/index.html"
