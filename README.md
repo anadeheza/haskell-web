@@ -1,4 +1,4 @@
-# Landing page
+# My Writings
 
 This is just a simple personal blogs website to post some of the stories I have written quite some time ago.
 
