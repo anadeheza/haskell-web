@@ -1,6 +1,6 @@
 ---
 title: The Girl Who Kept Stars in Jars
-date: 2025-04-03
+date: 2024-04-03
 excerpt: She found the first one in the garden, tangled in the rosemary.
 ---
 
@@ -16,6 +16,6 @@ By autumn she had fourteen. She lined the jars on her windowsill, and her room a
 
 Her mother asked what they were. "Just lights..." she said, which was true enough.
 
-What she didn't say was that each one was slightly different, a different warmth, a different hum, a different feeling when you held it. This one felt like the last day of school. That one felt like a name you almost remember.
+What she didn't say was that each one was slightly different, a different warmth, a different feeling when you held it. This one felt like the last day of school. That one felt like a name you almost remember.
 
 She was keeping them safe, she decided, until whoever lost them came back.

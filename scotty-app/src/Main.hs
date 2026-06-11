@@ -119,7 +119,7 @@ blogIndexHtml posts =
   let cards = mconcat (map postCard posts)
   in layout "Journal" $ TL.unlines
     [ "<div class='blog-header'>"
-    , "  <p class='section-tag'>Latest writing</p>"
+    , "  <p class='section-tag'>A bit of my writing</p>"
     , "  <h1 class='blog-title'>Ana's Journal</h1>"
     , "  <p class='blog-subtitle'>Daydreams, stories, and wandering thoughts.</p>"
     , "</div>"

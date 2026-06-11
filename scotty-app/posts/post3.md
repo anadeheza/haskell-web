@@ -1,10 +1,10 @@
 ---
 title: Tuesday, Raining
-date: 2025-05-22
+date: 2022-05-22
 excerpt: The café was almost empty. That was the whole point.
 ---
 
-The café was almost empty. That was the whole point.
+The cafe was almost empty. That was the whole point.
 
 She came every Tuesday when it rained, which in this city happened often enough to be reliable. She ordered the same thing, black coffee, a croissant she would mostly not eat, and sat at the window table, the one with the wobbly leg that nobody else wanted.
 
