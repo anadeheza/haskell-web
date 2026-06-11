@@ -64,9 +64,6 @@ parseFrontMatter raw =
       in  (pairs, TL.unlines (drop 1 body))
     _ -> ([], raw)
 
-lookupFM :: Text -> [(Text,Text)] -> Text -> Text
-lookupFM key fm def = maybe def id (lookup key fm)
-
 loadPost :: FilePath -> IO Post
 loadPost path = do
   raw <- TLIO.readFile path
@@ -157,7 +154,7 @@ main = do
   putStrLn $ "Server running on port " ++ show port
 
   let warpSettings = setPort port $ setHost "0.0.0.0" defaultSettings
-      scottyOptions = Options { verbose = 1, settings = warpSettings }
+      scottyOptions = defaultOptions { verbose = 1, settings = warpSettings }
 
   scottyOpts scottyOptions $ do
     middleware $ staticPolicy (addBase "static")
