@@ -14,7 +14,6 @@ import System.Directory (listDirectory)
 import System.FilePath ((</>), dropExtension, takeFileName)
 import Prelude hiding (readFile)
 import System.Environment (lookupEnv)
-import Data.Maybe (fromMaybe)
 
 data Post = Post
   { postSlug    :: Text   
@@ -152,12 +151,9 @@ postPageHtml p = layout (postTitle p) $ TL.unlines
 main :: IO ()
 main = do
   portStr <- lookupEnv "PORT"
-
-  import Text.Read (readMaybe)
-
   let port = case portStr of
-              Just p -> maybe 3000 id (readMaybe p)
-              Nothing -> 3000
+               Just p -> read p
+               Nothing -> 3000
   putStrLn $ "Server running on port " ++ show port
 
   let warpSettings = setPort port $ setHost "0.0.0.0" defaultSettings
