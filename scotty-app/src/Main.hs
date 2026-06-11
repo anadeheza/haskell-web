@@ -152,7 +152,12 @@ postPageHtml p = layout (postTitle p) $ TL.unlines
 main :: IO ()
 main = do
   portStr <- lookupEnv "PORT"
-  let port = maybe 3000 (read . fromMaybe "3000") portStr  -- manejo seguro
+
+  import Text.Read (readMaybe)
+
+  let port = case portStr of
+              Just p -> maybe 3000 id (readMaybe p)
+              Nothing -> 3000
   putStrLn $ "Server running on port " ++ show port
 
   let warpSettings = setPort port $ setHost "0.0.0.0" defaultSettings
