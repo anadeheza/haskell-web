@@ -151,7 +151,7 @@ postPageHtml p = layout (postTitle p) $ TL.unlines
 main :: IO ()
 main = do
   portStr <- lookupEnv "PORT"
-  let port = maybe 3300 read portStr
+  let port = maybe 3000 read portStr
   putStrLn $ "Server running on port " ++ show port
   scotty port $ do
 
