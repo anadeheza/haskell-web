@@ -69,7 +69,7 @@ lookupFM key fm def = maybe def id (lookup key fm)
 
 loadPost :: FilePath -> IO Post
 loadPost path = do
-  raw <- TLIO.readFile path
+  raw = TLIO.readFile path
   let (fm, body) = parseFrontMatter raw
       slug       = TL.pack $ dropExtension $ takeFileName path
       title      = lookupFM "title"   fm "(Untitled)"
@@ -157,7 +157,8 @@ main = do
   putStrLn $ "Server running on port " ++ show port
 
   let warpSettings = setPort port $ setHost "0.0.0.0" defaultSettings
-      scottyOptions = Options { verbose = 1, settings = warpSettings }
+      -- AQUÍ SE APLICÓ EL CAMBIO: Se usa defaultOptions en lugar de Options
+      scottyOptions = defaultOptions { verbose = 1, settings = warpSettings }
 
   scottyOpts scottyOptions $ do
     middleware $ staticPolicy (addBase "static")
