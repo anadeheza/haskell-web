@@ -2,17 +2,17 @@
 
 module Main where
 
+import Web.Scotty                   
+import Network.Wai.Middleware.Static (staticPolicy, addBase)
 import Network.Wai.Handler.Warp (setHost, setPort, defaultSettings)
-import Web.Scotty (Options(..), scottyOpts) 
-import Data.Text.Lazy          (Text)
+import Data.Text.Lazy (Text)
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.IO as TLIO
-import Data.List               (sortBy, isPrefixOf, isSuffixOf)
-import Data.Ord                (comparing, Down(..))
-import System.Directory        (listDirectory)
-import System.FilePath         ((</>), dropExtension, takeFileName)
-import Prelude hiding          (readFile)
-import Network.Wai.Middleware.Static (staticPolicy, addBase)
+import Data.List (sortBy, isPrefixOf, isSuffixOf)
+import Data.Ord (comparing, Down(..))
+import System.Directory (listDirectory)
+import System.FilePath ((</>), dropExtension, takeFileName)
+import Prelude hiding (readFile)
 import System.Environment (lookupEnv)
 import Data.Maybe (fromMaybe)
 
@@ -152,17 +152,15 @@ postPageHtml p = layout (postTitle p) $ TL.unlines
 main :: IO ()
 main = do
   portStr <- lookupEnv "PORT"
-  let port = maybe 3000 read portStr
+  let port = maybe 3000 (read . fromMaybe "3000") portStr  -- manejo seguro
   putStrLn $ "Server running on port " ++ show port
 
-  -- Configura el servidor Warp: escucha en 0.0.0.0 y en el puerto dinámico
   let warpSettings = setPort port $ setHost "0.0.0.0" defaultSettings
       scottyOptions = Options { verbose = 1, settings = warpSettings }
 
   scottyOpts scottyOptions $ do
-
-    -- ... Aquí va el resto de tus rutas (las que ya tienes) ...
     middleware $ staticPolicy (addBase "static")
+
     get "/" $ do
       setHeader "Content-Type" "text/html; charset=utf-8"
       home <- liftIO $ TLIO.readFile "templates/index.html"
