@@ -64,6 +64,9 @@ parseFrontMatter raw =
       in  (pairs, TL.unlines (drop 1 body))
     _ -> ([], raw)
 
+lookupFM :: Text -> [(Text,Text)] -> Text -> Text
+lookupFM key fm def = maybe def id (lookup key fm)
+
 loadPost :: FilePath -> IO Post
 loadPost path = do
   raw <- TLIO.readFile path
