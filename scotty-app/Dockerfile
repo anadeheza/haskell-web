@@ -12,5 +12,4 @@ COPY --from=builder /app/scotty-site ./scotty-site
 COPY static ./static
 COPY posts ./posts
 COPY templates ./templates
-EXPOSE 3000
 CMD ["./scotty-site", "+RTS", "-N"]
