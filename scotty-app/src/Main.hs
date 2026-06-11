@@ -153,7 +153,7 @@ main = do
   portStr <- lookupEnv "PORT"
   let port = case portStr of
                Just p -> read p
-               Nothing -> 3000
+               Nothing -> 3300
   putStrLn $ "Server running on port " ++ show port
 
   let warpSettings = setPort port $ setHost "0.0.0.0" defaultSettings
