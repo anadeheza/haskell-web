@@ -94,19 +94,18 @@ layout pageTitle content = TL.unlines
   [ "<!DOCTYPE html><html lang='en'><head>"
   , "<meta charset='UTF-8'/>"
   , "<meta name='viewport' content='width=device-width, initial-scale=1.0'/>"
-  , "<title>" <> pageTitle <> " | Verdant Studio</title>"
+  , "<title>" <> pageTitle <> " | Ana's Corner</title>"
   , "<link rel='preconnect' href='https://fonts.googleapis.com'/>"
   , "<link href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap' rel='stylesheet'/>"
   , "<link rel='stylesheet' href='/style.css'/>"
   , "<link rel='stylesheet' href='/blogs.css'/>"
   , "</head><body>"
   , "<nav>"
-  , "  <a class='logo' href='/'>Verdant Studio</a>"
+  , "  <a class='logo' href='/'>Ana's Corner</a>"
   , "  <ul class='nav-links'>"
   , "    <li><a href='/#hero'>Home</a></li>"
-  , "    <li><a href='/#services'>Services</a></li>"
+  , "    <li><a href='/#about'>About</a></li>"
   , "    <li><a href='/blog'>Journal</a></li>"
-  , "    <li><a href='/#contact'>Contact</a></li>"
   , "  </ul>"
   , "</nav>"
   , "<main class='page-content'>"
@@ -121,7 +120,8 @@ blogIndexHtml posts =
   in layout "Journal" $ TL.unlines
     [ "<div class='blog-header'>"
     , "  <p class='section-tag'>Latest writing</p>"
-    , "  <h1 class='blog-title'>The Verdant Journal</h1>"
+    , "  <h1 class='blog-title'>Ana's Journal</h1>"
+    , "  <p class='blog-subtitle'>Daydreams, stories, and wandering thoughts.</p>"
     , "</div>"
     , "<div class='post-grid'>" <> cards <> "</div>"
     ]
@@ -140,7 +140,7 @@ postPageHtml :: Post -> Text
 postPageHtml p = layout (postTitle p) $ TL.unlines
   [ "<article class='post-article'>"
   , "  <header class='post-header'>"
-  , "    <a class='back-link' href='/blog'>&larr; Journal</a>"
+  , "    <a class='back-link' href='/blog'>&larr; Back to Journal</a>"
   , "    <p class='post-date'>" <> postDate p <> "</p>"
   , "    <h1 class='post-title'>" <> postTitle p <> "</h1>"
   , "  </header>"
@@ -151,7 +151,7 @@ postPageHtml p = layout (postTitle p) $ TL.unlines
 main :: IO ()
 main = do
   portStr <- lookupEnv "PORT"
-  let port = maybe 3000 read portStr
+  let port = maybe 3300 read portStr
   putStrLn $ "Server running on port " ++ show port
   scotty port $ do
 

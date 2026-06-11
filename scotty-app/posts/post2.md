@@ -1,37 +1,19 @@
 ---
-title: Preparing Your Garden for Autumn
-date: 2026-09-08
-excerpt: The shift to autumn is not a closing down; it is the garden's most important investment in its own future.
+title: The Library at the Edge of Sleep
+date: 2025-06-10
+excerpt: Every night, just before sleep, she found the same door.
 ---
 
-## The season of quiet work
+Every night, just before sleep, she found the same door.
 
-There is a tendency to see autumn as an ending. Leaves fall, colour fades, and the instinct is to tidy everything away and wait for spring. But the gardener who understands the soil knows differently. Autumn is when the real work happens invisible, patient, and profoundly consequential for everything that follows.
+It stood in the space between one thought and the next, wooden, warped, with a brass handle shaped like a crescent moon. She had stopped questioning it. She simply turned the handle and went in.
 
-The weeks between the first cool nights and the first frost are a window of opportunity. The ground still holds warmth, roots are active, and anything you do now will pay dividends come March.
+Inside, the library had no ceiling. Shelves climbed upward into a soft violet dark, and the books hummed quietly, the way cats do. She had learned not to read the titles. The titles changed depending on what you needed, and she wasn't always sure she wanted to know.
 
-## Soil first, always
+She would walk the aisles instead, trailing her fingers along the spines, feeling the words pulse beneath the covers like small warm hearts.
 
-Before thinking about plants, think about the earth beneath them. A single generous layer of well-rotted compost or leaf mould worked into your beds will do more for next year's garden than almost any other intervention. Aim for five to eight centimetres across all open ground.
+One night she found a book that was just her name, repeated on every page in different handwriting. Some versions were hurried, some careful, some written in languages she didn't know. She sat down on the floor and read them all.
 
-If your soil compacts easily or drains poorly, this is also the moment to address it. Incorporate horticultural grit into heavy clay areas while the ground is still workable. You will not regret it when winter rains arrive.
+When she woke, she couldn't remember what any of it meant. But she felt, in some deep and unnameable way, that she had been thoroughly and gently understood.
 
-## What to cut back — and what to leave
-
-Not everything should be cut to the ground in autumn. Many seedheads provide critical winter food for birds, and hollow stems offer shelter for solitary bees and other beneficial insects.
-
-**Leave standing:** ornamental grasses, echinacea, rudbeckia, teasel, and most umbellifers. Their structural forms also bring quiet beauty to a frost-covered garden.
-
-**Cut back now:** dahlias once blackened by frost, faded annuals, and any diseased material. The latter should go to the bin, not the compost heap.
-
-## Planting for spring
-
-Autumn is prime time for bulbs. Tulips, alliums, narcissi, and camassias all need a cold period to perform well, and the soil temperature is still ideal for root establishment before winter sets in.
-
-Plant in generous drifts rather than formal rows. Nature does not plant in straight lines, and neither should you. Allow bulbs to overlap slightly in the hand as you scatter them, the results will feel effortless and inevitable next May.
-
-## A note on mulching
-
-A thick mulch applied in late autumn serves two purposes: it insulates roots from the worst of winter cold, and it suppresses the first flush of weeds in early spring. Apply it around (not on top of) the crowns of perennials, and keep it away from woody stems where it can encourage rot.
-
-Bark chip, homemade compost, or composted stable manure all work well. The best mulch is the one you have in abundance.
+She hoped the door would come again tonight.

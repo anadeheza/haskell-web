@@ -36,7 +36,7 @@
 }
 
 .post-card:hover {
-  border-bottom-color: #3d6b4f;
+  border-bottom-color: #6b5b3d;
   transform: translateY(-4px);
 }
 
@@ -69,7 +69,7 @@
   font-size: 15px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #3d6b4f;
+  color: #6b603d;
 }
 
 .post-article {
@@ -93,7 +93,7 @@
 }
 
 .back-link:hover { 
-  color: #3d6b4f; 
+  color: #6b563d; 
 }
 
 .post-title {

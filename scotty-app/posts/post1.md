@@ -1,38 +1,21 @@
 ---
-title: The Spring Garden Reset
-date: 2026-03-03
-excerpt: Spring asks only one thing of the gardener: attention. Show up, look closely, and let the season guide your hands.
+title: The Girl Who Kept Stars in Jars
+date: 2025-04-03
+excerpt: She found the first one in the garden, tangled in the rosemary.
 ---
 
-## Learning to read the garden in March
+She found the first one in the garden, tangled in the rosemary.
 
-Spring does not arrive all at once. It inches forward, a crocus here, a lengthening afternoon there, and the gardener's first task is simply to pay attention. Before lifting a tool, walk the garden slowly. Note what has survived, what has not, where self-seeders have appeared uninvited, and where last year's gaps now offer opportunity.
+It was small, not much bigger than a marble; and it glowed the pale gold of something that had been burning for a very long time. She scooped it up in both hands and felt it hum against her palms, warm and self-contained, like a thought that has finally found its shape.
 
-This quiet audit shapes everything that follows. It is also, if you allow it, one of the more pleasurable rituals the gardening year offers.
+She put it in a jam jar. Then she went inside for dinner.
 
-## The first cuts
+After that, she started finding them everywhere. One behind the loose brick in the wall. Three clustered under the fig tree like fallen fruit. One floating in the birdbath, which explained why the birds had been avoiding it.
 
-Once daytime temperatures settle reliably above five degrees, ornamental grasses can be cut hard to the ground. Left any later, new growth will have already started and you risk cutting into the emerging shoots. A sharp pair of shears and a length of twine to bundle the stems first will save considerable time clearing up.
+By autumn she had fourteen. She lined the jars on her windowsill, and her room at night looked like the edge of a city seen from very far away.
 
-Roses benefit from an open, outward-facing framework established now. Remove any crossing branches, dead wood, and weak growth. For repeat-flowering shrub roses, cut the remaining healthy stems back by roughly a third.
+Her mother asked what they were. "Just lights..." she said, which was true enough.
 
-## Feeding the soil before feeding the plants
+What she didn't say was that each one was slightly different, a different warmth, a different hum, a different feeling when you held it. This one felt like the last day of school. That one felt like a name you almost remember.
 
-Resist the urge to reach for fertiliser too early. Cold soil cannot absorb nutrients effectively, and a poorly timed feed often does more harm than good. Instead, focus on the soil first: a top-dressing of compost or well-rotted manure worked lightly into the surface will begin feeding the soil ecosystem as temperatures rise.
-
-Once you see consistent new growth on established perennials, usually mid to late March in temperate climates, a balanced granular feed applied around the root zone is worthwhile.
-
-## Dividing and multiplying
-
-Early spring, just as growth begins to stir, is the ideal time to divide overgrown clumps of perennials. Lift the entire clump with a fork, then separate it into smaller sections using two forks back-to-back or, for tougher crowns, a sharp spade.
-
-- **Divide now:** hostas, hemerocallis, nepeta, salvia, and most ornamental grasses
-- **Wait until autumn:** agapanthus, kniphofia, and anything that flowers in early summer
-
-Replant the divisions promptly, water in well, and you will have doubled or tripled your stock at no cost.
-
-## Sowing under cover
-
-The cold frame and greenhouse earn their keep in spring. Tender annuals; cosmos, nicotiana, sweet peas, can be started under cover from late February onward, giving them a head start before the last frost date passes.
-
-Sow thinly, label everything, and resist the temptation to sow too much at once. A staggered approach, small batches every two to three weeks, will give you a longer season of bloom and a more manageable workload come planting-out time.
+She was keeping them safe, she decided, until whoever lost them came back.
