@@ -4,6 +4,7 @@ This is just a simple personal blogs website to post some of the stories I have 
 
 This project was made using Haskell, HTML and CSS, mainly to get to know how to code in Haskell
 
+![pagina](image.png)
 ## Sections
 You have "Journal" and "About" sections, with their respective nav buttons.
 
