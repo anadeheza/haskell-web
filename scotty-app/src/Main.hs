@@ -101,63 +101,57 @@ loadAllPosts = do
       return p
 
 layout :: Text -> Text -> Text
-layout pageTitle content = TL.unlines
-  [ "<!DOCTYPE html><html lang='en'><head>"
-  , "<meta charset='UTF-8'/>"
-  , "<meta name='viewport' content='width=device-width, initial-scale=1.0'/>"
-  , "<title>" <> pageTitle <> " | Ana's Corner</title>"
-  , "<link rel='preconnect' href='https://fonts.googleapis.com'/>"
-  , "<link href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap' rel='stylesheet'/>"
-  , "<link rel='stylesheet' href='/style.css'/>"
-  , "<link rel='stylesheet' href='/blogs.css'/>"
-  , "</head><body>"
-  , "<nav>"
-  , "  <a class='logo' href='/'>Ana's Corner</a>"
-  , "  <ul class='nav-links'>"
-  , "    <li><a href='/#hero'>Home</a></li>"
-  , "    <li><a href='/#about'>About</a></li>"
-  , "    <li><a href='/blog'>Journals</a></li>"
-  , "  </ul>"
-  , "</nav>"
-  , "<main class='page-content'>"
-  , content
-  , "</main>"
-  , "</body></html>"
-  ]
+layout pageTitle content =
+  "<!DOCTYPE html><html lang='en'><head>" <>
+  "<meta charset='UTF-8'/>" <>
+  "<meta name='viewport' content='width=device-width, initial-scale=1.0'/>" <>
+  "<title>" <> pageTitle <> " | Ana's Corner</title>" <>
+  "<link rel='preconnect' href='https://fonts.googleapis.com'/>" <>
+  "<link href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap' rel='stylesheet'/>" <>
+  "<link rel='stylesheet' href='/style.css'/>" <>
+  "<link rel='stylesheet' href='/blogs.css'/>" <>
+  "</head><body>" <>
+  "<nav>" <>
+  "<a class='logo' href='/'>Ana's Corner</a>" <>
+  "<ul class='nav-links'>" <>
+  "<li><a href='/#hero'>Home</a></li>" <>
+  "<li><a href='/#about'>About</a></li>" <>
+  "<li><a href='/blog'>Journals</a></li>" <>
+  "</ul></nav>" <>
+  "<main class='page-content'>" <>
+  content <>
+  "</main></body></html>"
 
 blogIndexHtml :: [Post] -> Text
 blogIndexHtml posts =
-  let cards = mconcat (map postCard posts)
-  in layout "Journal" $ TL.unlines
-    [ "<div class='blog-header'>"
-    , "  <p class='section-tag'>A bit of my writing</p>"
-    , "  <h1 class='blog-title'>Ana's Journal</h1>"
-    , "  <p class='blog-subtitle'>Daydreams, stories, and wandering thoughts.</p>"
-    , "</div>"
-    , "<div class='post-grid'>" <> cards <> "</div>"
-    ]
+  layout "Journal" $
+  "<div class='blog-header'>" <>
+  "<p class='section-tag'>A bit of my writing</p>" <>
+  "<h1 class='blog-title'>Ana's Journal</h1>" <>
+  "<p class='blog-subtitle'>Daydreams, stories, and wandering thoughts.</p>" <>
+  "</div>" <>
+  "<div class='post-grid'>" <> mconcat (map postCard posts) <> "</div>"
 
 postCard :: Post -> Text
-postCard p = TL.unlines
-  [ "<a class='post-card' href='/blog/" <> postSlug p <> "'>"
-  , "  <span class='post-date'>" <> postDate p <> "</span>"
-  , "  <h2 class='post-card-title'>" <> postTitle p <> "</h2>"
-  , "  <p class='post-excerpt'>" <> postExcerpt p <> "</p>"
-  , "  <span class='read-more'>Read more &rarr;</span>"
-  , "</a>"
-  ]
+postCard p =
+  "<a class='post-card' href='/blog/" <> postSlug p <> "'>" <>
+  "<span class='post-date'>" <> postDate p <> "</span>" <>
+  "<h2 class='post-card-title'>" <> postTitle p <> "</h2>" <>
+  "<p class='post-excerpt'>" <> postExcerpt p <> "</p>" <>
+  "<span class='read-more'>Read more &rarr;</span>" <>
+  "</a>"
 
 postPageHtml :: Post -> Text
-postPageHtml p = layout (postTitle p) $ TL.unlines
-  [ "<article class='post-article'>"
-  , "  <header class='post-header'>"
-  , "    <a class='back-link' href='/blog'>&larr; Back to Journal</a>"
-  , "    <p class='post-date'>" <> postDate p <> "</p>"
-  , "    <h1 class='post-title'>" <> postTitle p <> "</h1>"
-  , "  </header>"
-  , "  <div class='post-body'>" <> postBody p <> "</div>"
-  , "</article>"
-  ]
+postPageHtml p =
+  layout (postTitle p) $
+  "<article class='post-article'>" <>
+  "<header class='post-header'>" <>
+  "<a class='back-link' href='/blog'>&larr; Back to Journal</a>" <>
+  "<p class='post-date'>" <> postDate p <> "</p>" <>
+  "<h1 class='post-title'>" <> postTitle p <> "</h1>" <>
+  "</header>" <>
+  "<div class='post-body'>" <> postBody p <> "</div>" <>
+  "</article>"
 
 main :: IO ()
 main = do
