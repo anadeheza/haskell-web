@@ -10,7 +10,7 @@ import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.IO as TLIO
 import Data.List (sortBy, isPrefixOf, isSuffixOf)
 import Data.Ord (comparing, Down(..))
-import System.Directory (listDirectory)
+import System.Directory (listDirectory, getCurrentDirectory)
 import System.FilePath ((</>), dropExtension, takeFileName)
 import Prelude hiding (readFile)
 import System.Environment (lookupEnv)
@@ -84,7 +84,12 @@ loadPost path = do
 
 loadAllPosts :: IO [Post]
 loadAllPosts = do
-  files <- listDirectory "posts"
+  let dir = "posts"
+  putStrLn $ "Looking for posts in: " ++ dir
+
+  files <- listDirectory dir
+  putStrLn $ "Found files: " ++ show files
+
   let mds = filter (".md" `isSuffixOf`) files
   posts <- mapM (loadPost . ("posts" </>)) mds
   return $ sortBy (comparing (Down . postDate)) posts
@@ -150,10 +155,13 @@ postPageHtml p = layout (postTitle p) $ TL.unlines
 
 main :: IO ()
 main = do
+  cwd <- getCurrentDirectory
+  putStrLn $ "Working directory: " ++ cwd 
+
   portStr <- lookupEnv "PORT"
   let port = case portStr of
                Just p -> read p
-               Nothing -> 10000
+               Nothing -> 3300
   putStrLn $ "Server running on port " ++ show port
 
   let warpSettings = setPort port $ setHost "0.0.0.0" defaultSettings

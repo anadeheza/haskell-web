@@ -198,61 +198,6 @@ nav {
     font-weight: 300; 
 }
 
-.contact { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 10px; 
-    align-items: start; 
-    border: 1px solid #6b553d;
-    padding: 50px;
-    margin-bottom: 20px;
-}
-
-.contact-intro { 
-    margin-top: 50px;
-    font-family: 'Playfair Display', serif; 
-    font-size: 30px; 
-    margin-bottom: 30px; 
-}
-
-.contact-text { 
-    font-size: 15px; 
-    color: #7a7a6a; 
-    font-weight: 300; 
-    margin-bottom: 30px; 
-}
-
-.contact-detail { 
-    display: flex; 
-    gap: 15px; 
-    align-items: center; 
-    margin-bottom: 16px; 
-    font-size: 15px; 
-    color: #7a7a6a; 
-}
-
-.contact-detail span { 
-    color: #6b573d; 
-    font-size: 17px; 
-}
-
-.form {
-    margin: 50px;
-}
-.form-field { 
-    margin-bottom: 20px; 
-}
-
-.form-field input, .form-field textarea { 
-    width: 100%; 
-    padding: 20px; 
-    border: 1px solid #4545366b; 
-    background: #fff; 
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px; 
-    color: #1a1a14; 
-}
-
 @keyframes fadeUp { 
     from { 
         opacity:0; 
