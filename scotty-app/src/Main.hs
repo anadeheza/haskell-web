@@ -15,6 +15,7 @@ import System.FilePath ((</>), dropExtension, takeFileName)
 import Prelude hiding (readFile)
 import System.Environment (lookupEnv)
 import System.IO (hSetBuffering, stdout, stderr, BufferMode(..))
+import Control.Exception (try, SomeException)
 
 data Post = Post
   { postSlug    :: Text   
@@ -187,7 +188,14 @@ main = do
     get "/blog" $ do
       liftIO $ putStrLn "Hit /blog route"
       setHeader "Content-Type" "text/html; charset=utf-8"
-      html (blogIndexHtml posts)  
+      result <- liftIO $ try (evaluate (blogIndexHtml posts)) :: ActionM (Either SomeException Text)
+      case result of
+        Left err -> do
+          liftIO $ putStrLn $ "ERROR rendering blog: " ++ show err
+          html "<h1>Error rendering page</h1>"
+        Right page -> do
+          liftIO $ putStrLn "Rendered successfully, sending response..."
+          html page 
 
     get "/blog/:slug" $ do
       slug <- pathParam "slug"
