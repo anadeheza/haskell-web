@@ -71,7 +71,7 @@ parseFrontMatter raw =
 lookupFM :: Text -> [(Text,Text)] -> Text -> Text
 lookupFM key fm def = maybe def id (lookup key fm)
 
-oadPost :: FilePath -> IO Post
+loadPost :: FilePath -> IO Post
 loadPost path = do
   handle <- openFile path ReadMode
   hSetEncoding handle utf8
