@@ -15,7 +15,7 @@ import System.FilePath ((</>), dropExtension, takeFileName)
 import Prelude hiding (readFile)
 import System.Environment (lookupEnv)
 import System.IO (hSetBuffering, stdout, stderr, BufferMode(..))
-import Control.Exception (try, SomeException)
+import Control.Exception (try, evaluate, SomeException)
 
 data Post = Post
   { postSlug    :: Text   
