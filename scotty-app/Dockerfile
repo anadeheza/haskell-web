@@ -13,4 +13,4 @@ COPY static ./static
 COPY posts ./posts
 COPY templates ./templates
 EXPOSE 3300
-CMD ["./scotty-site", "+RTS", "-N"]
+CMD ["sh", "-c", "cd /app && ./scotty-site +RTS -N"]
