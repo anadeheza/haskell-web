@@ -14,6 +14,7 @@ import System.Directory (listDirectory, getCurrentDirectory)
 import System.FilePath ((</>), dropExtension, takeFileName)
 import Prelude hiding (readFile)
 import System.Environment (lookupEnv)
+import System.IO (hSetBuffering, stdout, stderr, BufferMode(..))
 
 data Post = Post
   { postSlug    :: Text   
@@ -155,6 +156,9 @@ postPageHtml p = layout (postTitle p) $ TL.unlines
 
 main :: IO ()
 main = do
+  hSetBuffering stdout NoBuffering  
+  hSetBuffering stderr NoBuffering 
+
   cwd <- getCurrentDirectory
   putStrLn $ "Working directory: " ++ cwd 
 
