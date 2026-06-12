@@ -18,4 +18,6 @@ This year, i learnt to code in haskell at school, as a project, we were asked to
 It took me way too long to get to understand haskell so it took me an insane amount of hours of coding for the type of project i've made since it is just a simple page but it has a lot of trial an error behind it, it was a real headache but i am glad i ended up understanding the language and it works just fine
 
 ### AI USE
-> I used Gemini to help me understand Haskell syntax since my teacher's explanation wasn't always enough for me. I also used Claude AI to fix the Dockerfile since the deploy was not working and i didn't know why :)
+> I used Gemini to help me understand Haskell syntax since my teacher's explanation wasn't always enough for me. I also used Claude AI to fix the Dockerfile since the deploy was not working and i didn't know why :) 
+<br>
+Several AI agents tried to help me with the 502 (Bad Gateway) error, te culpprit turned out to be a word with an accent (café) that was breaking my haskell code since it was not being recognized as a known character. In the end, i solved it by myyself but my code may have ended up looking a bit weir with all those logs and harcoded ports (i didn't want to erase anything out of fear for breaking the code again haha)
