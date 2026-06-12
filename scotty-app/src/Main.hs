@@ -87,19 +87,17 @@ loadAllPosts :: IO [Post]
 loadAllPosts = do
   let dir = "posts"
   putStrLn $ "Looking for posts in: " ++ dir
-
   files <- listDirectory dir
   putStrLn $ "Found files: " ++ show files
-
   let mds = filter (".md" `isSuffixOf`) files
-  --posts <- mapM (loadPost . ("posts" </>)) mds
-  posts <- mapM (\f -> do
-    putStrLn $ "Loading post: " ++ f  
-    p <- loadPost ("posts" </> f)
-    putStrLn $ "Loaded: " ++ show (postTitle p) 
-    return p
-  ) mds
+  posts <- mapM loadAndLog mds
   return $ sortBy (comparing (Down . postDate)) posts
+  where
+    loadAndLog f = do
+      putStrLn $ "Loading post: " ++ f
+      p <- loadPost ("posts" </> f)
+      putStrLn $ "Loaded: " ++ show (postTitle p)
+      return p
 
 layout :: Text -> Text -> Text
 layout pageTitle content = TL.unlines
