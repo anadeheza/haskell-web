@@ -193,6 +193,8 @@ main = do
 
     get "/blog/:slug" $ do
       slug <- pathParam "slug"
+      liftIO $ putStrLn $ "slug: " ++ show slug
+
       case filter (\p -> postSlug p == slug) posts of  
         (p:_) -> do
           setHeader "Content-Type" "text/html; charset=utf-8"
