@@ -92,7 +92,13 @@ loadAllPosts = do
   putStrLn $ "Found files: " ++ show files
 
   let mds = filter (".md" `isSuffixOf`) files
-  posts <- mapM (loadPost . ("posts" </>)) mds
+  --posts <- mapM (loadPost . ("posts" </>)) mds
+  posts <- mapM (\f -> do
+    putStrLn $ "Loading post: " ++ f  
+    p <- loadPost ("posts" </> f)
+    putStrLn $ "Loaded: " ++ show (postTitle p) 
+    return p
+  ) mds
   return $ sortBy (comparing (Down . postDate)) posts
 
 layout :: Text -> Text -> Text
@@ -180,7 +186,9 @@ main = do
       html home
 
     get "/blog" $ do
+      liftIO $ putStrLn "Hit /blog route" 
       posts <- liftIO loadAllPosts
+      liftIO $ putStrLn "Posts loaded, rendering..."  
       setHeader "Content-Type" "text/html; charset=utf-8"
       html (blogIndexHtml posts)
 
