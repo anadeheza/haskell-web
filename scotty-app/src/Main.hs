@@ -16,6 +16,7 @@ import System.FilePath ((</>), dropExtension, takeFileName)
 import Prelude hiding (readFile)
 import System.Environment (lookupEnv)
 import System.IO (hSetBuffering, stdout, stderr, BufferMode(..))
+import System.IO (hSetEncoding, utf8, openFile, IOMode(..))
 import Control.Exception (try, evaluate, SomeException)
 
 data Post = Post
@@ -70,9 +71,11 @@ parseFrontMatter raw =
 lookupFM :: Text -> [(Text,Text)] -> Text -> Text
 lookupFM key fm def = maybe def id (lookup key fm)
 
-loadPost :: FilePath -> IO Post
+oadPost :: FilePath -> IO Post
 loadPost path = do
-  raw <- TLIO.readFile path
+  handle <- openFile path ReadMode
+  hSetEncoding handle utf8
+  raw <- TLIO.hGetContents handle
   let (fm, body) = parseFrontMatter raw
       slug       = TL.pack $ dropExtension $ takeFileName path
       title      = lookupFM "title"   fm "(Untitled)"
