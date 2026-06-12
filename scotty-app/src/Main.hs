@@ -160,19 +160,20 @@ postPageHtml p = layout (postTitle p) $ TL.unlines
 
 main :: IO ()
 main = do
-  hSetBuffering stdout NoBuffering  
-  hSetBuffering stderr NoBuffering 
-
+  hSetBuffering stdout NoBuffering
+  hSetBuffering stderr NoBuffering
   cwd <- getCurrentDirectory
-  putStrLn $ "Working directory: " ++ cwd 
-
+  putStrLn $ "Working directory: " ++ cwd
   portStr <- lookupEnv "PORT"
   let port = case portStr of
-               Just p -> read p
+               Just p  -> read p
                Nothing -> 3300
   putStrLn $ "Server running on port " ++ show port
 
-  let warpSettings = setPort port $ setHost "0.0.0.0" defaultSettings
+  posts <- loadAllPosts   
+  putStrLn $ "Loaded " ++ show (length posts) ++ " posts"
+
+  let warpSettings  = setPort port $ setHost "0.0.0.0" defaultSettings
       scottyOptions = defaultOptions { verbose = 1, settings = warpSettings }
 
   scottyOpts scottyOptions $ do
@@ -184,16 +185,13 @@ main = do
       html home
 
     get "/blog" $ do
-      liftIO $ putStrLn "Hit /blog route" 
-      posts <- liftIO loadAllPosts
-      liftIO $ putStrLn "Posts loaded, rendering..."  
+      liftIO $ putStrLn "Hit /blog route"
       setHeader "Content-Type" "text/html; charset=utf-8"
-      html (blogIndexHtml posts)
+      html (blogIndexHtml posts)  
 
     get "/blog/:slug" $ do
-      slug  <- pathParam "slug"
-      posts <- liftIO loadAllPosts
-      case filter (\p -> postSlug p == slug) posts of
+      slug <- pathParam "slug"
+      case filter (\p -> postSlug p == slug) posts of  
         (p:_) -> do
           setHeader "Content-Type" "text/html; charset=utf-8"
           html (postPageHtml p)
