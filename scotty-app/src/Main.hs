@@ -188,8 +188,9 @@ main = do
           liftIO $ putStrLn $ "ERROR rendering blog: " ++ show err
           html "<h1>Error rendering page</h1>"
         Right page -> do
-          liftIO $ putStrLn "Rendered successfully, sending response..."
-          html page 
+          let !len = TL.length page
+          liftIO $ putStrLn $ "Response length: " ++ show len
+          html page
 
     get "/blog/:slug" $ do
       slug <- pathParam "slug"
