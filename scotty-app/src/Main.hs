@@ -105,7 +105,7 @@ layout pageTitle content = TL.unlines
   , "  <ul class='nav-links'>"
   , "    <li><a href='/#hero'>Home</a></li>"
   , "    <li><a href='/#about'>About</a></li>"
-  , "    <li><a href='/blog'>Journal</a></li>"
+  , "    <li><a href='/blog'>Journals</a></li>"
   , "  </ul>"
   , "</nav>"
   , "<main class='page-content'>"

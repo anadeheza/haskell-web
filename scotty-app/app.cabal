@@ -1,7 +1,7 @@
 cabal-version:      2.4
 name:               scotty-site
 version:            0.1.0.0
-description:        Verdant Studio — Scotty website with blog
+description:        Ana's Corner — Scotty website with blog
 
 executable scotty-site
     main-is:          Main.hs
