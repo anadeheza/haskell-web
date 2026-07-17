@@ -263,3 +263,13 @@ nav {
 .quiz-result {
   padding: 40px;
 }
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    border-top: 1px solid #00000050;
+    align-items: center;
+    font-size: 12px;
+    color: #4f4c48;
+}
