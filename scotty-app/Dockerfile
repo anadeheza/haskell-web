@@ -12,5 +12,6 @@ COPY --from=builder /app/scotty-site ./scotty-site
 COPY static ./static
 COPY posts ./posts
 COPY templates ./templates
+COPY scripts ./scripts
 EXPOSE 3300
 CMD ["sh", "-c", "cd /app && ./scotty-site +RTS -N"]
