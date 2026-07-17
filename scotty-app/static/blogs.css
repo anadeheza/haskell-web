@@ -181,3 +181,22 @@
 .margin-submit {
   align-self: flex-start;
 }
+
+.quiz-sub {
+  font-size: 13px;
+  color: #4a4a3a;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.quiz-sub span {
+  color: #81661d;
+}
+
+.quiz-header{
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  display: block;
+}

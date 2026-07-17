@@ -20,7 +20,7 @@ const questions = [
     {
         text: "Pick an evening activity",
         answers: [
-            { label: "Walking somewhere you've never been", type: "wanderer" },
+            { label: "Walking somewhere you've never been to", type: "wanderer" },
             { label: "Write a love letter to someone", type: "romantic" },
             { label: "Imagining and writing around", type: "daydreamer" },
             { label: "Going out of town to explore other places", type: "adventurer" }
@@ -35,22 +35,35 @@ const questions = [
             { label: "Nothing — you're already asleep from exhaustion", type: "adventurer" }
         ]
     },
+    {
+        text: "What dream do you have?",
+        answers: [
+            { label: "Find love and live happily ever after", type: "romantic" },
+            { label: "Become a novelist for an important editorial", type: "daydreamer" },
+            { label: "Explore the world, travelling around", type: "wanderer" },
+            { label: "Do extreme sports (skiing, surfing...)", type: "adventurer" }
+        ]
+    },
 ]
 
 const results = {
     daydreamer: {
+        type: "a daydreamer",
         title: "The Little Prince",
         desc: "You live half in this world and half in a better one that comes from inside you"
     },
     wanderer: {
+        type: "a wanderer",
         title: "Wuthering Heights",
         desc: "Restless, wild, and always drawn toward the horizon"
     },
     romantic: {
+        type: "a romantic",
         title: "Jane Eyre",
         desc: "Quietly intense, and more devoted than you know"
     },
     adventurer: {
+        type: "an adventurer",
         title: "The Hobbit",
         desc: "You didn't ask for the adventure, but you'll take it anyways, that's just who you are"
     }
@@ -83,10 +96,11 @@ function render() {
         const r = results[winner];
         box.innerHTML =
             "<div class='post-card quiz-result'>" +
-            "<span class='post-date'>Your book</span>" +
+            "<span class='quiz-header'>Your book</span>" +
+            "<p class='quiz-sub'>You are "+ "<span>" + r.type + "</span>" + "</p>" +
             "<h2 class='post-card-title'>" + r.title + "</h2>" +
             "<p class='post-excerpt'>" + r.desc + "</p>" +
-            "<button class='btn btn-primary' onclick='location.reload()'>Try again</button>" +
+            "<button class='btn btn-primary' onclick='location.reload()'>Go again</button>" +
             "</div>";
     }
 }
