@@ -8,7 +8,7 @@ This project was made using Haskell, HTML, CSS, and JavaScript, mainly to get to
 ## Sections
 You have "Journal", "About" and "Quiz" sections, with their respective nav buttons.
 
-On "Journal" you'll find some fctional stories that me and my sister have written a few years ago.
+On "Journal" you'll find some fictional stories that me and my sister have written a few years ago.
 <br>
 In each story, you can leave a message as a "margin note"
 
