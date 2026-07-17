@@ -15,9 +15,12 @@ import System.Directory (listDirectory, getCurrentDirectory)
 import System.FilePath ((</>), dropExtension, takeFileName)
 import Prelude hiding (readFile)
 import System.Environment (lookupEnv)
-import System.IO (hSetBuffering, stdout, stderr, BufferMode(..))
-import System.IO (hSetEncoding, utf8, openFile, IOMode(..))
+import System.IO (hSetBuffering, stdout, stderr, BufferMode(..), hSetEncoding, utf8, openFile, IOMode(..))
 import Control.Exception (try, evaluate, SomeException)
+import System.Random (randomRIO)
+import Data.IORef
+import Control.Monad (unless)
+
 
 data Post = Post
   { postSlug    :: Text   
@@ -104,6 +107,17 @@ loadAllPosts = do
       putStrLn $ "Loaded: " ++ show (postTitle p)
       return p
 
+
+escapeHtml :: Text -> Text
+escapeHtml = TL.concatMap esc
+  where
+    esc '&'  = "&amp;"
+    esc '<'  = "&lt;"
+    esc '>'  = "&gt;"
+    esc '"'  = "&quot;"
+    esc '\'' = "&#39;"
+    esc c    = TL.singleton c
+
 layout :: Text -> Text -> Text
 layout pageTitle content =
   "<!DOCTYPE html><html lang='en'><head>" <>
@@ -120,7 +134,7 @@ layout pageTitle content =
   "<ul class='nav-links'>" <>
   "<li><a href='/#hero'>Home</a></li>" <>
   "<li><a href='/#about'>About</a></li>" <>
-  "<li><a href='/blog'>Journals</a></li>" <>
+  "<li><a href='/quiz'>Quiz</a></li>" <>
   "</ul></nav>" <>
   "<main class='page-content'>" <>
   content <>
@@ -145,8 +159,8 @@ postCard p =
   "<span class='read-more'>Read more &rarr;</span>" <>
   "</a>"
 
-postPageHtml :: Post -> Text
-postPageHtml p =
+postPageHtml :: Post -> [Text] -> Text
+postPageHtml p notes =
   layout (postTitle p) $
   "<article class='post-article'>" <>
   "<header class='post-header'>" <>
@@ -155,7 +169,27 @@ postPageHtml p =
   "<h1 class='post-title'>" <> postTitle p <> "</h1>" <>
   "</header>" <>
   "<div class='post-body'>" <> postBody p <> "</div>" <>
+  marginNotesHtml (postSlug p) notes <>
   "</article>"
+
+marginNotesHtml :: Text -> [Text] -> Text
+marginNotesHtml slug notes =
+  "<section class='margin-notes'>" <>
+  "<p class='section-tag'>Left in the margin</p>" <>
+  "<h3 class='margin-notes-title'>Thoughts from readers</h3>" <>
+  "<div class='margin-notes-list'>" <>
+  (if null notes
+     then "<p class='margin-empty'>No notes yet &mdash; be the first to leave one.</p>"
+     else mconcat (map noteItem (reverse notes))) <>
+  "</div>" <>
+  "<form class='margin-form' method='post' action='/blog/" <> slug <> "/note'>" <>
+  "<textarea name='note' class='margin-input' placeholder='Leave a thought...' maxlength='280' required></textarea>" <>
+  "<button type='submit' class='btn btn-primary margin-submit'>Leave a note</button>" <>
+  "</form>" <>
+  "</section>"
+
+noteItem :: Text -> Text
+noteItem n = "<p class='margin-note'>" <> escapeHtml n <> "</p>"
 
 main :: IO ()
 main = do
@@ -175,13 +209,18 @@ main = do
   let warpSettings  = setPort port $ setHost "0.0.0.0" defaultSettings
       scottyOptions = defaultOptions { verbose = 1, settings = warpSettings }
 
+  counter <- newIORef (0 :: Int)
+  notesRef <- newIORef ([] :: [(Text, Text)])
+
   scottyOpts scottyOptions $ do
     middleware $ staticPolicy (addBase "static")
+    middleware $ staticPolicy (addBase "scripts")
 
     get "/" $ do
-      setHeader "Content-Type" "text/html; charset=utf-8"
+      n <- liftIO $ atomicModifyIORef' counter (\c -> (c+1, c+1))
       home <- liftIO $ TLIO.readFile "templates/index.html"
-      html home
+      let home' = TL.replace "{{COUNT}}" (TL.pack (show n)) home
+      html home'
 
     get "/blog" $ do
       liftIO $ putStrLn "Hit /blog route"
@@ -198,12 +237,32 @@ main = do
 
     get "/blog/:slug" $ do
       slug <- pathParam "slug"
-      liftIO $ putStrLn $ "slug: " ++ show slug
-
-      case filter (\p -> postSlug p == slug) posts of  
+      case filter (\p -> postSlug p == slug) posts of
         (p:_) -> do
+          allNotes <- liftIO $ readIORef notesRef
+          let notes = [ n | (s, n) <- allNotes, s == slug ]
           setHeader "Content-Type" "text/html; charset=utf-8"
-          html (postPageHtml p)
+          html (postPageHtml p notes)
         [] -> do
           status $ toEnum 404
           html "<h1>Post not found</h1>"
+
+    post "/blog/:slug/note" $ do
+      slug <- pathParam "slug"
+      noteText <- formParam "note"
+      let trimmed = TL.strip noteText
+      liftIO $ unless (TL.null trimmed) $
+        modifyIORef' notesRef ((slug, TL.take 280 trimmed) :)
+      redirect ("/blog/" <> slug)
+      
+    get "/random" $ do
+      if null posts
+        then redirect "/blog"
+        else do
+          i <- liftIO $ randomRIO (0, length posts - 1)
+          redirect ("/blog/" <> postSlug (posts !! i))
+
+    get "/quiz" $ do
+      setHeader "Content-Type" "text/html; charset=utf-8"
+      quiz <- liftIO $ TLIO.readFile "templates/quiz.html"
+      html quiz
